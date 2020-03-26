@@ -18,6 +18,6 @@ int initHandlers(void)
 // }
 void SIGINT_handler(void)
 {
-    Sio_puts(" *Shell Terminated.*\n");
+    Sio_puts(" \n*Shell Terminated.*\n");
     _exit(0);
 }

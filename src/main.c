@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
+
 // #include <builtin.h>
 
 #define MAXLINE 128
@@ -36,7 +37,6 @@ int main(int argc, char const *argv[], char *envp[])
     }
 }
 
-
 void eval(char *cmdline)
 {
     char *argv[MAXARGS];
@@ -55,7 +55,7 @@ void eval(char *cmdline)
         {
             if (execve(argv[0], argv, environ) < 0)
             {
-                printf("%s command not found.\n", argv[0]);
+                printf("%s is not a exctutable or a bulit-in command.\n", argv[0]);
                 exit(0);
             }
         }
@@ -73,16 +73,6 @@ void eval(char *cmdline)
     }
 
     return;
-}
-
-int builtin_command(char **argv)
-{
-    if (!strcmp(argv[0], "quit"))
-        exit(0);
-    if (!strcmp(argv[0], "&"))
-        return 1;
-
-    return 0;
 }
 
 int parseline(char *buf, char **argv)
@@ -122,5 +112,3 @@ void unix_error(char *msg) /* Unix-style error */
     fprintf(stderr, "%s: %s\n", msg, strerror(errno));
     exit(0);
 }
-
-

@@ -1,10 +1,17 @@
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <string.h>
+
 #ifndef _BUILT_IN_H
 #define _BUILT_IN_H
-//built-in commands
-void cd(const char[]);
-void ls(void);
-void cat(const char[]);
-void help(void);
-void exit(void);
+//api
+int builtin_command(char **argv);
+
+//private functions for built-in command
+static void cd(const char[]);
+static void ls(void);
+static void cat(const char[]);
+static void help(void);
 
 #endif
